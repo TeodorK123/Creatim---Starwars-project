@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { charactersAtom } from "./state/charactersAtom";
+import { fetchCharacters } from "./api/swapi";
+import CharacterList from "./components/CharacterList";
 
-function App() {
+const App: React.FC = () => {
+  const [, setCharacters] = useRecoilState(charactersAtom);
+
+  useEffect(() => {
+    async function loadCharacters() {
+      const data = await fetchCharacters();
+      setCharacters(data);
+    }
+    loadCharacters();
+  }, [setCharacters]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mt-4">
+      <h1 className="text-center">Star Wars Characters</h1>
+      <CharacterList />
     </div>
   );
-}
+};
 
 export default App;
