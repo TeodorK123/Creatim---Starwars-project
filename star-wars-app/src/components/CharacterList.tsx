@@ -49,7 +49,7 @@ const CharacterList: React.FC = () => {
         ref={listRef}
         className="d-flex gap-3"
         style={{
-          margin: "5%", // Optional: adds some padding around the list
+          margin: "11.5%", // Optional: adds some padding around the list
           overflowX: "auto", // Horizontal scroll
           whiteSpace: "nowrap", // Prevent wrapping
           scrollBehavior: "smooth", // Smooth scrolling

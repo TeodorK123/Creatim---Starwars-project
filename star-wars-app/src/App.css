@@ -1,7 +1,11 @@
 .App {
   text-align: center;
   background: radial-gradient(ellipse closest-side, rgba(185, 185, 24, 1.0), rgba(0, 0, 0, 1)); /* Tighter, brighter yellow glow */
-  min-height: 100vh; /* Ensure the background covers the full screen */
+  height: 100vh; /* Ensure the app takes up exactly one screen height */
+  display: flex; /* Use flexbox to align children */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Distribute space between children */
+  overflow: hidden; /* Prevent scrolling */
 }
 
 .App-logo {
