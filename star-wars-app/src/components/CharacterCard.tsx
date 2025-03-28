@@ -88,7 +88,7 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
           <>
             {/* Editable fields for all character properties */}
             <div className="form-group mb-2">
-              <label htmlFor="name" style={{ color: "lightgray" }}>
+              <label htmlFor="name" style={{ color: "lightgray",fontWeight: "bold" }}>
                 Name:
               </label>
               <input
@@ -98,10 +98,11 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
                 value={editedCharacter.name}
                 onChange={handleChange}
                 className="form-control"
+                style={{ fontWeight: "bold" }}
               />
             </div>
             <div className="form-group mb-2">
-              <label htmlFor="height" style={{ color: "lightgray" }}>
+              <label htmlFor="height" style={{ color: "lightgray",fontWeight: "bold" }}>
                 Height:
               </label>
               <input
@@ -111,10 +112,11 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
                 value={editedCharacter.height}
                 onChange={handleChange}
                 className="form-control"
+                style={{ fontWeight: "bold" }}
               />
             </div>
             <div className="form-group mb-2">
-              <label htmlFor="mass" style={{ color: "lightgray" }}>
+              <label htmlFor="mass" style={{ color: "lightgray",fontWeight: "bold" }}>
                 Mass:
               </label>
               <input
@@ -124,10 +126,11 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
                 value={editedCharacter.mass}
                 onChange={handleChange}
                 className="form-control"
+                style={{ fontWeight: "bold" }}
               />
             </div>
             <div className="form-group mb-2">
-              <label htmlFor="hair_color" style={{ color: "lightgray" }}>
+              <label htmlFor="hair_color" style={{ color: "lightgray",fontWeight: "bold" }}>
                 Hair Color:
               </label>
               <input
@@ -137,10 +140,11 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
                 value={editedCharacter.hair_color}
                 onChange={handleChange}
                 className="form-control"
+                style={{ fontWeight: "bold" }}
               />
             </div>
             <div className="form-group mb-2">
-              <label htmlFor="skin_color" style={{ color: "lightgray" }}>
+              <label htmlFor="skin_color" style={{ color: "lightgray",fontWeight: "bold" }}>
                 Skin Color:
               </label>
               <input
@@ -150,10 +154,11 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
                 value={editedCharacter.skin_color}
                 onChange={handleChange}
                 className="form-control"
+                style={{ fontWeight: "bold" }}
               />
             </div>
             <div className="form-group mb-2">
-              <label htmlFor="eye_color" style={{ color: "lightgray" }}>
+              <label htmlFor="eye_color" style={{ color: "lightgray",fontWeight: "bold" }}>
                 Eye Color:
               </label>
               <input
@@ -163,10 +168,11 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
                 value={editedCharacter.eye_color}
                 onChange={handleChange}
                 className="form-control"
+                style={{ fontWeight: "bold" }}
               />
             </div>
             <div className="form-group mb-2">
-              <label htmlFor="birth_year" style={{ color: "lightgray" }}>
+              <label htmlFor="birth_year" style={{ color: "lightgray",  fontWeight: "bold"  }}>
                 Birth Year:
               </label>
               <input
@@ -176,10 +182,11 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
                 value={editedCharacter.birth_year}
                 onChange={handleChange}
                 className="form-control"
+                style={{ fontWeight: "bold" }}
               />
             </div>
             <div className="form-group mb-2">
-              <label htmlFor="gender" style={{ color: "lightgray" }}>
+              <label htmlFor="gender" style={{ color: "lightgray", fontWeight: "bold"  }}>
                 Gender:
               </label>
               <input
@@ -189,17 +196,24 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
                 value={editedCharacter.gender}
                 onChange={handleChange}
                 className="form-control"
+                style={{ fontWeight: "bold" }}
               />
             </div>
 
             {/* Save and Cancel buttons */}
             <div className="d-flex justify-content-between mt-3">
-              <button className="btn btn-success" onClick={saveChanges}>
+              <button className="btn btn-success" onClick={saveChanges}
+              style={{
+                boxShadow: "0 0 10px rgba(0, 255, 0, 0.8)", // Green glow effect
+              }}>
                 Save
               </button>
               <button
                 className="btn btn-danger"
                 onClick={() => setIsEditing(false)}
+                style={{
+                  boxShadow: "0 0 10px rgba(255, 0, 0, 0.8)", // Red glow effect
+                }}
               >
                 Cancel
               </button>
@@ -237,6 +251,7 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
                 width: "140px",
                 height: "40px",
                 boxShadow: "0 0 10px rgba(255, 255, 0, 0.8)",
+                fontWeight: "bold",
                 alignSelf: "center",
                 marginTop: "20px",
               }}

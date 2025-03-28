@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background: radial-gradient(ellipse closest-side, rgba(185, 185, 24, 1.0), rgba(0, 0, 0, 1)); /* Tighter, brighter yellow glow */
+  min-height: 100vh; /* Ensure the background covers the full screen */
 }
 
 .App-logo {
@@ -28,6 +30,8 @@
   color: #61dafb;
 }
 
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +40,5 @@
     transform: rotate(360deg);
   }
 }
+
+
