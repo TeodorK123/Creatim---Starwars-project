@@ -1,3 +1,6 @@
+// The character card component is the individual card that displays the character's information and allows for editing. It uses the Recoil state management library to manage the character data. The component also imports images for each character from a local images folder and uses them as background images for the cards.
+
+// IMPORTS
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { charactersAtom, Character } from "../state/charactersAtom";
@@ -30,12 +33,18 @@ const characterImages: { [key: string]: string } = {
 
 interface Props {
   character: Character;
+  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CharacterCard: React.FC<Props> = ({ character }) => {
+// CharacterCard component definition
+
+const CharacterCard: React.FC<{ character: Character; setIsEditing: React.Dispatch<React.SetStateAction<boolean>> }> = ({
+  character,
+  setIsEditing,
+}) => {
   const [characters, setCharacters] = useRecoilState(charactersAtom);
-  const [isEditing, setIsEditing] = useState(false);
   const [editedCharacter, setEditedCharacter] = useState(character);
+  const [isEditing, setLocalEditing] = useState(false); // Local state to track editing mode
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditedCharacter({ ...editedCharacter, [e.target.name]: e.target.value });
@@ -47,10 +56,20 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
         char.name === character.name ? editedCharacter : char
       )
     );
-    setIsEditing(false);
+    setLocalEditing(false); // Exit local editing mode
+    setIsEditing(false); // Notify parent that editing has ended
   };
 
-  // Get the background image based on the character's name, or use a default if not found
+  const cancelEdit = () => {
+    setLocalEditing(false); // Exit local editing mode
+    setIsEditing(false); // Notify parent that editing has ended
+  };
+
+  const startEdit = () => {
+    setLocalEditing(true); // Enter local editing mode
+    setIsEditing(true); // Notify parent that editing has started
+  };
+
   const characterImage = characterImages[character.name] || "";
 
   return (
@@ -66,20 +85,20 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
         position: "relative",
       }}
     >
-      {/* Add a padding at the bottom of the card */}
-      <div
+
+      <div // Black tint that include the character's information
+        // This div will be the overlay for the character information
         className="card p-3 text-light"
         style={{
           backgroundColor: "rgba(0, 0, 0, 0.6)",
           borderRadius: "8px",
-          paddingBottom: "20px", // Reduced to make sure it doesn't take too much space
+          paddingBottom: "0px", 
           position: "absolute",
-          bottom: "10px", // Keep it at the bottom
-          left: "10px", // Optional, add margin if you want space from the edges
-          right: "10px", // Optional, add margin if you want space from the edges
+          bottom: "10px", //Adds a bit of padding to the bottom
+          left: "10px", 
+          right: "10px",
           display: "flex",
           flexDirection: "column",
-
           overflowY: "auto", // Add scroll functionality
           maxHeight: "90%", // Set a maximum height to enable scrolling
         }}
@@ -210,7 +229,7 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
               </button>
               <button
                 className="btn btn-danger"
-                onClick={() => setIsEditing(false)}
+                onClick={cancelEdit}
                 style={{
                   boxShadow: "0 0 10px rgba(255, 0, 0, 0.8)", // Red glow effect
                 }}
@@ -221,11 +240,13 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
           </>
         ) : (
           <>
-            <h5 style={{ color: "lightgray", marginBottom: "5px" }}>
-              Name: <strong>{character.name}</strong>
+            {/* Styling for all the editable text */}
+            {/* Warning, editing the name of the character removes the link to the image */}
+            <h5 style={{ color: "lightgray", marginBottom: "5px" }}> 
+              Name: <strong>{character.name}</strong> 
             </h5>
             <p style={{ color: "lightgray", marginBottom: "5px" }}>
-              Height: <strong>{character.height}</strong>
+              Height: <strong>{character.height} cm</strong>
             </p>
             <p style={{ color: "lightgray", marginBottom: "5px" }}>
               Mass: <strong>{character.mass}</strong>
@@ -255,7 +276,7 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
                 alignSelf: "center",
                 marginTop: "20px",
               }}
-              onClick={() => setIsEditing(true)}
+              onClick={startEdit}
             >
               Edit
             </button>

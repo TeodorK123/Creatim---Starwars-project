@@ -1,3 +1,5 @@
+// This file contains the API call to fetch Star Wars characters from the SWAPI (Star Wars API).
+
 export async function fetchCharacters() {
   try {
     const response = await fetch("https://swapi.dev/api/people/");

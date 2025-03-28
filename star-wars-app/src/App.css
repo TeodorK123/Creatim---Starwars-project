@@ -1,3 +1,5 @@
+/* The CSS of the main div */
+/* Radial gradient to the background */
 .App {
   text-align: center;
   background: radial-gradient(ellipse closest-side, rgba(185, 185, 24, 1.0), rgba(0, 0, 0, 1)); /* Tighter, brighter yellow glow */
@@ -18,6 +20,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+
+
+
 
 .App-header {
   background-color: #282c34;
@@ -42,6 +48,137 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar {
+    display: flex;
+    flex-direction: row; /* Align items horizontally */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center the entire navbar */
+    padding: 10px 0; /* Add padding for spacing */
+  }
+
+  .navbar-left,
+  .navbar-right {
+    display: flex;
+    flex-direction: row; /* Keep buttons in a row */
+    gap: 20px; /* Add spacing between buttons */
+  }
+
+  .navbar-logo {
+    margin: 0 20px; /* Add spacing around the logo */
+    display: flex;
+    justify-content: center; /* Center the logo */
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    justify-content: center; /* Center all items horizontally */
+    align-items: center; /* Center items vertically */
+    padding: 5px 0; /* Add padding for spacing */
+    gap: 0px; /* Add spacing between items */
+  }
+
+  .navbar-upcoming {
+    order: 1; /* Ensure these buttons are in the first row */
+    margin: 10px; /* Add spacing between buttons */
+    flex-basis: 33%;
+  }
+  .navbar-legacy {
+    order: 3; /* Ensure these buttons are in the first row */
+    margin: 0 10px; /* Add spacing between buttons */
+    flex-basis: 33%;
+  }
+
+  .navbar-logo {
+    order: 2; /* Ensure the logo is in the first row, between the buttons */
+    display: flex;
+    justify-content: center; /* Center the logo */
+    align-items: center;
+    margin: 0px 0; /* Add spacing around the logo */
+    flex-basis: 20%; /* Force the logo to take up the full width of the row */
+  }
+
+  .navbar-merch {
+    order: 3; /* Ensure these buttons are in the second row */
+    margin: 0 10px; /* Add spacing between buttons */
+    flex-basis: 30%;
+  }
+  .navbar-about {
+    order: 4; /* Ensure these buttons are in the second row */
+    margin: 0 10px; /* Add spacing between buttons */
+    flex-basis: 30%;
+  }
+
+  .navbar-merch,
+  .navbar-about {
+    display: inline-block; /* Ensure buttons are inline */
+    justify-content: center; /* Center the buttons horizontally */
+  }
+
+
+  .character-list-container {
+    padding-top: 100px; /* Add padding to push the list down */
+  }
+
+  .character-list {
+    flex-direction: column; /* Switch to vertical layout */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    white-space: normal; /* Allow wrapping */
+    max-height: 80vh; /* Limit height for vertical scrolling */
+    margin: 0 auto; /* Center the list */
+    gap: 15px; /* Adjust gap between cards */
+  }
+
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    justify-content: space-evenly; /* Distribute items evenly with equal spacing */
+    align-items: center; /* Center items vertically */
+    padding: 5px 0; /* Add padding for spacing */
+    gap: 10px; /* Add consistent spacing between items */
+  }
+
+  .navbar-upcoming,
+  .navbar-legacy,
+  .navbar-merch,
+  .navbar-about {
+    order: 1; /* Ensure all buttons are in the first row */
+    margin: 0 5px; /* Add consistent spacing between buttons */
+    text-align: center; /* Center the text inside the buttons */
+    font-size: 0.9rem; /* Shrink the font size of the buttons */
+    padding: 5px 8px; /* Reduce padding inside the buttons */
+    flex-basis: calc(33.33% - 10px); /* Allow three buttons per row */
+  }
+
+  .navbar-about {
+    order: 2; /* Place this button in the second row */
+    flex-basis: calc(40% - 10px); /* Allow two items in the second row */
+  }
+
+  .navbar-logo {
+    order: 3; /* Place the logo in the second row */
+    display: flex;
+    justify-content: center; /* Center the logo */
+    align-items: center;
+    flex-basis: calc(50% - 10px); /* Allow two items in the second row */
+    margin-top: 10px; /* Add spacing above the logo */
+    height: 40px; /* Shrink the height of the logo */
+  }
+
+  .navbar-logo img {
+    height: 50px; /* Shrink the logo image */
+    object-fit: contain; /* Ensure the logo scales properly */
   }
 }
 
